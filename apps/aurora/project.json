@@ -16,7 +16,10 @@
         "polyfills": ["zone.js"],
         "tsConfig": "apps/aurora/tsconfig.app.json",
         "assets": ["apps/aurora/src/favicon.ico", "apps/aurora/src/assets"],
-        "styles": ["apps/aurora/src/styles.scss"],
+        "styles": [
+          "apps/aurora/src/styles.scss",
+          "apps/aurora/src/styles/colors.scss"
+        ],
         "scripts": []
       },
       "configurations": {
