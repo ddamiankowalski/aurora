@@ -2,7 +2,7 @@
   "name": "aurora",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "aurora",
+  "prefix": "au",
   "sourceRoot": "apps/aurora/src",
   "tags": [],
   "targets": {
