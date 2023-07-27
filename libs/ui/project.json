@@ -2,7 +2,7 @@
   "name": "aurora-ui",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/ui/src",
-  "prefix": "aurora",
+  "prefix": "au-ui",
   "tags": [],
   "projectType": "library",
   "targets": {

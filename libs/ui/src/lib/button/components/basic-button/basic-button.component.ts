@@ -6,15 +6,15 @@ import {
 import { ClassBinder } from '@aurora/common';
 
 @Component({
-  selector: 'au-login-component',
-  styleUrls: ['./login.component.scss'],
-  templateUrl: './login.component.html',
-  encapsulation: ViewEncapsulation.None,
+  selector: 'au-ui-basic-button',
+  templateUrl: './basic-button.component.html',
+  styleUrls: ['./basic-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
   providers: [ClassBinder],
 })
-export class LoginComponent {
+export class BasicButtonComponent {
   constructor(classBinder: ClassBinder) {
-    classBinder.bind('login');
+    classBinder.bind('basic-button');
   }
 }

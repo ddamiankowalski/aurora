@@ -1,1 +1,26 @@
-hm
+<form [formGroup]="loginFormGroup">
+  <div class="form__header">
+    <h1 class="form__header form__header--welcome">
+      Welcome back, <span class="form__header--welcome-name">Damian</span>
+    </h1>
+    <h2 class="form__header form__header--sub-welcome">
+      Use the form below to log into the platform
+    </h2>
+  </div>
+
+  <div class="form__inputs">
+    <au-ui-basic-input
+      placeholder="Enter your email"
+      label="Email"
+      [control]="emailControl"
+    ></au-ui-basic-input>
+    <au-ui-basic-input
+      placeholder="Enter your password"
+      label="Password"
+      [control]="passwordControl"
+    ></au-ui-basic-input>
+    <au-ui-basic-button>Sign in</au-ui-basic-button>
+  </div>
+
+  <div class="form__sign-up">Still does not have an account? Sign Up</div>
+</form>

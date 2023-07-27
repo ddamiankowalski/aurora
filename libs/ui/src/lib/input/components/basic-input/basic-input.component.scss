@@ -1,0 +1,20 @@
+.basic-input {
+    input {
+        all: unset;
+        width: 100%;
+        height: 2.5rem;
+        border: 1px solid var(--medium-grey);
+        border-radius: .3125rem;
+        padding: 1rem 0.75rem;
+        box-sizing: border-box;
+        font-size: 0.875rem;
+        color: var(--medium-grey);
+    }
+
+    &__label {
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-bottom: .5rem;
+    }
+}

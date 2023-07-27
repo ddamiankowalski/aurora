@@ -1,1 +1,42 @@
-.form {}
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__header {
+        color: var(--dark-color);
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        &--welcome {
+            display: block;
+            font-weight: 700;
+            font-size: 2rem;
+        }
+
+        &--welcome-name {
+            font-weight: 500;
+            font-size: 2rem;
+        }
+
+        &--sub-welcome {
+            font-size: .9375rem;
+            font-weight: 500;
+            color: var(--dark-grey);
+        }
+    }
+
+    &__inputs {
+        margin-top: 3rem;
+        gap: 1.5rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__sign-up {
+        font-size: 0.875rem;
+        text-align: center;
+        margin-top: 2.5rem;
+    }
+}

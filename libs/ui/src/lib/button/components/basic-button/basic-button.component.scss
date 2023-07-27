@@ -1,0 +1,16 @@
+.basic-button {
+    button {
+        all: unset;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        background-color: var(--primary-color-deep);
+        border-radius: .3125rem;
+        height: 2.5rem;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 0.75rem;
+        color: var(--primary-light);
+    }
+}
