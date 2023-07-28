@@ -36,6 +36,10 @@ export class BasicCheckboxComponent implements ControlValueAccessor {
     classBinder.bind('basic-checkbox');
   }
 
+  get isChecked(): boolean {
+    return this._value;
+  }
+
   writeValue(value: boolean): void {
     this._value = value;
   }
@@ -55,5 +59,6 @@ export class BasicCheckboxComponent implements ControlValueAccessor {
   onCheckboxClicked(): void {
     this._value = !this._value;
     this._onChange(this._value);
+    this._onTouched();
   }
 }

@@ -12,6 +12,25 @@
         border: 1px solid var(--medium-grey);
         border-radius: .3125rem;
         cursor: pointer;
+        position: relative;
+
+        &--checked {
+            background-color: var(--primary-color-deep);
+            border: 1px solid var(--primary-color-deep);
+            box-shadow: 0px 0px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        &--icon {
+            position: absolute;
+            top: -0.07rem;
+            left: -0.07rem;
+            border: unset;
+            color: var(--background-color);
+
+            &.gg-check {
+                --ggs: 0.85
+            }
+        }
 
         &:focus {
             outline: 3px solid rgba($color: #3B5D70, $alpha: 0.2);
@@ -20,5 +39,6 @@
 
     &__label {
         font-size: 0.75rem;
+        color: var(--dark-grey);
     }
 }

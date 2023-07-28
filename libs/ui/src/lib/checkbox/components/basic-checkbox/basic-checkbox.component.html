@@ -1,4 +1,10 @@
 <div class="basic-checkbox__wrapper" (click)="onCheckboxClicked()">
-  <div tabindex="0" class="basic-checkbox__box"></div>
+  <div
+    tabindex="0"
+    class="basic-checkbox__box"
+    [class.basic-checkbox__box--checked]="isChecked"
+  >
+    <div *ngIf="isChecked" class="basic-checkbox__box--icon gg-check"></div>
+  </div>
   <label *ngIf="label" class="basic-checkbox__label">{{ label }}</label>
 </div>

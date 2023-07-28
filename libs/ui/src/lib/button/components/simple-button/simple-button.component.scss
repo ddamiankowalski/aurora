@@ -1,0 +1,18 @@
+.simple-button {
+    button {
+        all: unset;
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: var(--primary-color-deep);
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        &:focus {
+            text-decoration: underline;
+        }
+    }
+}

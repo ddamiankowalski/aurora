@@ -1,4 +1,5 @@
 .form {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,12 +36,33 @@
     }
 
     &__sign-up {
+        position: absolute;
+        bottom: 4rem;
+        left: 50%;
+        transform: translateX(-50%);
         font-size: 0.875rem;
+        font-weight: 400;
         text-align: center;
         margin-top: 2.5rem;
+
+        &--button {
+            font-weight: 500;
+            cursor: pointer;
+            color: var(--primary-color-deep);
+
+            &:hover {
+                text-decoration: underline;
+            }
+
+            &:focus {
+                text-decoration: underline;
+            }
+        }
     }
 
     &__util {
-        margin: 1.5rem 0;
+        margin: 2rem 0;
+        display: flex;
+        justify-content: space-between;
     }
 }
