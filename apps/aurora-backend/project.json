@@ -14,7 +14,7 @@
         "outputPath": "dist/apps/aurora-backend",
         "main": "apps/aurora-backend/src/main.ts",
         "tsConfig": "apps/aurora-backend/tsconfig.app.json",
-        "assets": ["apps/aurora-backend/src/assets"],
+        "assets": [],
         "isolatedConfig": true,
         "webpackConfig": "apps/aurora-backend/webpack.config.js"
       },
