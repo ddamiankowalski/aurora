@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(cookieParser());
 
-app.use('/api', globalErrorHandler, authRouter);
+app.use('/api', authRouter);
 
 app.use('*', globalErrorHandler);
 
