@@ -2,26 +2,9 @@ import * as express from 'express';
 import * as jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import 'dotenv/config';
+import { authenticateToken } from '../middleware/auth/auth-middleware';
 
 export const router = express.Router();
-
-const authenticateToken = (req, res, next): void => {
-  const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1];
-
-  if (!token) {
-    throw new Error('');
-  }
-
-  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-    if (err) {
-      throw err;
-    }
-
-    req.user = user;
-    next();
-  });
-};
 
 router.post('/login', (req, res, next) => {
   const { email, password } = req.body;
