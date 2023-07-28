@@ -56,12 +56,11 @@ router.post('/login', (req, res, next) => {
   res.send('ok');
 });
 
-router.post('/register', async (req, res) => {
+router.post('/register', (req, res) => {
   const { password, email } = req.body;
 
   try {
-    const salt = await bcrypt.genSalt();
-    const hashedPass = await bcrypt.hash(password, salt);
+    const hashedPass = bcrypt.hashSync(password, 10);
     res.send(hashedPass);
   } catch {
     throw new Error('ERROR');
