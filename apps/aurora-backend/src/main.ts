@@ -8,7 +8,8 @@ import { DBManager } from './database/data-source';
 
 const app = express();
 
-DBManager.createDataSource();
+const dbManager = DBManager.getInstance();
+dbManager.createDataSource();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

@@ -5,7 +5,7 @@ import 'dotenv/config';
 
 export class DBManager {
   private static _manager: DBManager | null = null;
-  private static _dataSource: DataSource | null = null;
+  private _dataSource: DataSource | null = null;
 
   public static getInstance(): DBManager {
     if(!this._manager) {
@@ -15,7 +15,7 @@ export class DBManager {
     return this._manager;
   }
 
-  public static createDataSource(): void {
+  public createDataSource(): void {
     this._dataSource = new DataSource({
       type: 'mysql',
       host: process.env.DB_HOST,
@@ -33,5 +33,9 @@ export class DBManager {
     this._dataSource.initialize()
       .then(() => console.log('Successfully initialized DataSource'))
       .catch(err => console.log(err))
+  }
+
+  get dataSource(): DataSource {
+    return this._dataSource;
   }
 }
