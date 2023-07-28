@@ -3,6 +3,7 @@ import { router as authRouter } from './routes/Auth.routes';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import globalErrorHandler from './middleware/errors/error-handler';
+import 'reflect-metadata';
 
 const app = express();
 app.use(express.json());

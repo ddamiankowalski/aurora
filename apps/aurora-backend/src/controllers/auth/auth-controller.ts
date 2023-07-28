@@ -1,9 +1,9 @@
-export class AuthenticateController {
-  private static _controller: AuthenticateController | null = null;
+export class AuthController {
+  private static _controller: AuthController | null = null;
 
-  public static getInstance(): AuthenticateController {
+  public static getInstance(): AuthController {
     if (!this._controller) {
-      this._controller = new AuthenticateController();
+      this._controller = new AuthController();
     }
 
     return this._controller;

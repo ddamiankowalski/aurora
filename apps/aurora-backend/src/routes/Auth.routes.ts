@@ -6,10 +6,9 @@ import { authenticateToken } from '../middleware/auth/auth-middleware';
 
 export const router = express.Router();
 
-router.post('/login', (req, res, next) => {
+router.post('/login', (req, res) => {
   const { email, password } = req.body;
 
-  // TODO here is where we retrieve the user by email in the database
   if (!email || !password) {
     throw new Error('ERROR');
   }
