@@ -20,8 +20,14 @@
       [control]="passwordControl"
     ></au-ui-basic-input>
   </div>
-  <au-ui-basic-button>Sign in</au-ui-basic-button>
 
+  <div class="form__util">
+    <au-ui-checkbox
+      label="Remember me"
+      formControlName="remember"
+    ></au-ui-checkbox>
+  </div>
+  <au-ui-basic-button>Sign in</au-ui-basic-button>
 
   <div class="form__sign-up">Still does not have an account? Sign Up</div>
 </form>

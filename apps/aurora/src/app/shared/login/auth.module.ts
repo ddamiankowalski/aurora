@@ -7,6 +7,7 @@ import { SideNewsComponent } from './components/side-news/side-news.component';
 import { CommonModule } from '@angular/common';
 import { AuInputModule } from '@aurora/ui';
 import { AuButtonModule } from '../../../../../../libs/ui/src/lib/button/button.module';
+import { AuCheckboxModule } from '../../../../../../libs/ui/src/lib/checkbox/checkbox.module';
 
 const routes: Routes = [
   {
@@ -27,6 +28,7 @@ const routes: Routes = [
     CommonModule,
     AuInputModule,
     AuButtonModule,
+    AuCheckboxModule,
   ],
   declarations: [LoginFormComponent, SideNewsComponent, LoginComponent],
 })

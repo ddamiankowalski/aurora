@@ -28,7 +28,7 @@
     }
 
     &__inputs {
-        margin-top: 3rem;
+        margin-top: 3.5rem;
         gap: 2rem;
         display: flex;
         flex-direction: column;
@@ -38,5 +38,9 @@
         font-size: 0.875rem;
         text-align: center;
         margin-top: 2.5rem;
+    }
+
+    &__util {
+        margin: 1.5rem 0;
     }
 }

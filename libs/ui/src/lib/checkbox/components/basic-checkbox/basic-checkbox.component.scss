@@ -1,0 +1,24 @@
+.basic-checkbox {
+    &__wrapper {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+    }
+
+    &__box {
+        display: block;
+        width: 1rem;
+        height: 1rem;
+        border: 1px solid var(--medium-grey);
+        border-radius: .3125rem;
+        cursor: pointer;
+
+        &:focus {
+            outline: 3px solid rgba($color: #3B5D70, $alpha: 0.2);
+        }
+    }
+
+    &__label {
+        font-size: 0.75rem;
+    }
+}
