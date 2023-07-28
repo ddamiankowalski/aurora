@@ -8,7 +8,23 @@
         padding: 1rem 0.75rem;
         box-sizing: border-box;
         font-size: 0.875rem;
-        color: var(--medium-grey);
+        color: var(---dark-color);
+
+        &:focus {
+          outline: 3px solid rgba($color: #3B5D70, $alpha: 0.2);
+        }
+
+        &::placeholder {
+          color: var(--medium-grey);
+          opacity: 0.75;
+          transition: opacity .3s ease;
+        }
+
+        &:hover {
+          &::placeholder {
+            opacity: 1;
+          }
+        }
     }
 
     &__label {
