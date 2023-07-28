@@ -4,13 +4,11 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import globalErrorHandler from './middleware/errors/error-handler';
 import 'reflect-metadata';
-import { AppDataSource } from './database/data-source';
+import { DBManager } from './database/data-source';
 
 const app = express();
 
-  AppDataSource.initialize()
-    .then(() => console.log('connected'))
-    .catch((error) => console.log(error))
+DBManager.createDataSource();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
