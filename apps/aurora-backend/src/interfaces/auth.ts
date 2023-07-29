@@ -1,4 +1,7 @@
 export interface JWTTokens {
-  accessToken: string;
-  refreshToken: string;
+  accessToken: JWTAccessToken;
+  refreshToken: JWTRefreshToken;
 }
+
+export type JWTAccessToken = string;
+export type JWTRefreshToken = string;
