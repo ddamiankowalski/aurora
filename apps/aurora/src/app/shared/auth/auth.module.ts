@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
-import { LoginFormComponent } from './components/login-form/form.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SideNewsComponent } from './components/side-news/side-news.component';
 import { CommonModule } from '@angular/common';

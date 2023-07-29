@@ -26,6 +26,7 @@ export class RegisterFormComponent {
     repeatPassword: [''],
     firstName: [''],
     lastName: [''],
+    terms: [false],
   });
 
   constructor(

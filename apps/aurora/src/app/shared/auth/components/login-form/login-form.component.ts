@@ -9,8 +9,8 @@ import { ClassBinder } from '@aurora/common';
 
 @Component({
   selector: 'au-login-form',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss'],
+  templateUrl: './login-form.component.html',
+  styleUrls: ['./login-form.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [ClassBinder],

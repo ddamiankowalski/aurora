@@ -4,7 +4,7 @@ export const routes: Route[] = [
   {
     path: 'auth',
     loadChildren: () =>
-      import('./shared/login/auth.module').then((m) => m.LoginModule),
+      import('./shared/auth/auth.module').then((m) => m.LoginModule),
   },
   {
     path: '',
