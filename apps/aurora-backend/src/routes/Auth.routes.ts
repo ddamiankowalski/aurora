@@ -4,6 +4,7 @@ import bcrypt from 'bcrypt';
 import 'dotenv/config';
 import { authenticateToken } from '../middleware/auth/auth-middleware';
 import { User } from '../database/entity/user';
+import { RefreshToken } from '../database/entity/refresh-token';
 
 export const router = express.Router();
 
@@ -58,14 +59,22 @@ router.post('/register', async (req, res, next) => {
   }
 });
 
-router.get('/refresh', (req, res) => {
+router.get('/refresh', async (req, res, next) => {
   const refreshToken = req.cookies['aurora_auth_ref'];
 
   if (!refreshToken) {
-    throw new Error('ERROR');
+    return next(new Error('Refresh token failed'));
   }
 
-  // check if refreshtoken exists in the database etc
+  try {
+    const token = await RefreshToken.findOneBy({ token: refreshToken });
+
+    if (!token) {
+      return next(new Error('Refresh token failed'));
+    }
+  } catch (error) {
+    return next(error);
+  }
 
   jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
     if (err) {
@@ -81,6 +90,7 @@ router.get('/refresh', (req, res) => {
     );
 
     res.cookie('aurora_auth', accessToken);
+    res.sendStatus(200);
   });
 });
 

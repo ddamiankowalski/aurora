@@ -2,6 +2,7 @@ import { DataSource } from 'typeorm';
 import { User } from './entity/user';
 
 import 'dotenv/config';
+import { RefreshToken } from './entity/refresh-token';
 
 export class DBManager {
   private static _manager: DBManager | null = null;
@@ -25,7 +26,7 @@ export class DBManager {
       database: process.env.DB_NAME,
       synchronize: true,
       logging: true,
-      entities: [User],
+      entities: [User, RefreshToken],
       subscribers: [],
       migrations: [],
     });
