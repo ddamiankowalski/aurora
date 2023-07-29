@@ -5,6 +5,21 @@
     align-items: center;
     height: 100%;
 
+    &__link {
+        color: var(--primary-color-deep);
+        font-weight: 500;
+
+        &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+
+    &__inputs-password {
+        display: flex;
+        gap: 1rem;
+    }
+
     &__wrapper {
         min-width: 20rem;
     }
@@ -41,7 +56,7 @@
 
     &__inputs {
         margin-top: 2.5rem;
-        gap: 2rem;
+        gap: 1.5rem;
         display: flex;
         flex-direction: column;
     }

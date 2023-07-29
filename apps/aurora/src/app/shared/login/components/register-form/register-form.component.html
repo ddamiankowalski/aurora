@@ -14,18 +14,20 @@
       label="Email"
       [control]="getRegisterControl('email')"
     ></au-ui-basic-input>
-    <au-ui-basic-input
-      placeholder="Enter your password"
-      label="Password"
-      type="password"
-      [control]="getRegisterControl('password')"
-    ></au-ui-basic-input>
-    <au-ui-basic-input
-      placeholder="Repeat your password"
-      label="Repeat password"
-      type="password"
-      [control]="getRegisterControl('repeatPassword')"
-    ></au-ui-basic-input>
+    <div class="register-form__inputs-password">
+      <au-ui-basic-input
+        placeholder="Enter your password"
+        label="Password"
+        type="password"
+        [control]="getRegisterControl('password')"
+      ></au-ui-basic-input>
+      <au-ui-basic-input
+        placeholder="Repeat your password"
+        label="Repeat password"
+        type="password"
+        [control]="getRegisterControl('repeatPassword')"
+      ></au-ui-basic-input>
+    </div>
   </div>
 
   <div *ngIf="step === 'personal'" class="register-form__inputs">
@@ -39,6 +41,12 @@
       label="Last name"
       [control]="getRegisterControl('lastName')"
     ></au-ui-basic-input>
+    <au-ui-checkbox
+      >Accept
+      <span class="register-form__link"
+        >Terms and Conditions</span
+      ></au-ui-checkbox
+    >
   </div>
 
   <div class="register-form__buttons">

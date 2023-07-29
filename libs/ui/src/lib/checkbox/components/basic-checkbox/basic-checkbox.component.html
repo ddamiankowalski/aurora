@@ -6,5 +6,7 @@
   >
     <div *ngIf="isChecked" class="basic-checkbox__box--icon gg-check"></div>
   </div>
-  <label *ngIf="label" class="basic-checkbox__label">{{ label }}</label>
+  <label class="basic-checkbox__label">
+    <ng-content></ng-content>
+  </label>
 </div>
