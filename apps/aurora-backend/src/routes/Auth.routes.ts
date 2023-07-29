@@ -3,22 +3,26 @@ import * as jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import 'dotenv/config';
 import { authenticateToken } from '../middleware/auth/auth-middleware';
+import { User } from '../database/entity/user';
 
 export const router = express.Router();
 
-router.post('/login', (req, res) => {
+router.post('/login', async (req, res, next) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
     throw new Error('ERROR');
   }
 
-  const compare = bcrypt.compareSync(
-    password,
-    '$2b$10$Xe.PREcv8VJ4zMS./TeWM.BW.3fuoNUm2uqFSKjzCq4ncYnIB0ONu'
-  );
+  const user = await User.findOneBy({ email });
+
+  if (!user) {
+    return next(new Error('No user was found'));
+  }
+
+  const compare = await bcrypt.compare(password, user.password);
   if (!compare) {
-    throw new Error('PASSWORD INCORRECT');
+    return next(new Error('Password is incorrect'));
   }
 
   const accessToken = jwt.sign(
@@ -35,17 +39,22 @@ router.post('/login', (req, res) => {
   res.cookie('aurora_auth', accessToken);
   res.cookie('aurora_auth_ref', refreshToken);
 
-  res.send('ok');
+  res.send(user);
 });
 
-router.post('/register', (req, res) => {
-  const { password, email } = req.body;
+router.post('/register', async (req, res, next) => {
+  const { password, email, firstName, lastName } = req.body;
 
   try {
-    const hashedPass = bcrypt.hashSync(password, 10);
-    res.send(hashedPass);
+    await User.createNew(
+      email,
+      firstName,
+      lastName,
+      await bcrypt.hash(password, 10)
+    );
+    res.sendStatus(200);
   } catch {
-    throw new Error('ERROR');
+    return next(new Error('Duplicate entry'));
   }
 });
 

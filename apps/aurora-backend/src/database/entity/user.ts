@@ -1,7 +1,7 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class User {
+export class User extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -11,12 +11,26 @@ export class User {
   @Column({ length: 36 })
   lastName: string;
 
-  @Column({ length: 100 })
+  @Column({ length: 100, unique: true })
   email: string;
 
-  @Column({ length: 36 })
+  @Column({ length: 100 })
   password: string;
 
-  @Column()
+  @Column({ default: true })
   isActive: boolean;
+
+  static async createNew(
+    email: string,
+    firstName: string,
+    lastName: string,
+    password: string
+  ): Promise<void> {
+    const newUser = new User();
+    newUser.email = email;
+    newUser.firstName = firstName;
+    newUser.lastName = lastName;
+    newUser.password = password;
+    await newUser.save();
+  }
 }

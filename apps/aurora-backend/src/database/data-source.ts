@@ -8,14 +8,14 @@ export class DBManager {
   private _dataSource: DataSource | null = null;
 
   public static getInstance(): DBManager {
-    if(!this._manager) {
+    if (!this._manager) {
       this._manager = new DBManager();
     }
 
     return this._manager;
   }
 
-  public createDataSource(): void {
+  public async createDataSource(): Promise<void> {
     this._dataSource = new DataSource({
       type: 'mysql',
       host: process.env.DB_HOST,
@@ -28,11 +28,14 @@ export class DBManager {
       entities: [User],
       subscribers: [],
       migrations: [],
-    })
+    });
 
-    this._dataSource.initialize()
-      .then(() => console.log('Successfully initialized DataSource'))
-      .catch(err => console.log(err))
+    try {
+      await this._dataSource.initialize();
+      console.log('Successfully initialized DataSource');
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   get dataSource(): DataSource {
