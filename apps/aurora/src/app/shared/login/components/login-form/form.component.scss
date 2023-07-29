@@ -1,12 +1,19 @@
+@import 'breakpoints';
+
 .form {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0 2rem;
 
     &__wrapper {
-        min-width: 22rem;
         max-width: 25rem;
+        min-width: 19rem;
+
+        @include for-desktop-up {
+            min-width: 22rem;
+        }
     }
 
     &__header {
@@ -49,6 +56,7 @@
         text-align: center;
         margin-top: 2.5rem;
         color: var(--dark-grey);
+        line-height: 1.5rem;
 
         &--button {
             font-weight: 600;

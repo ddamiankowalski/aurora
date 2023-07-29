@@ -1,9 +1,12 @@
+@import 'breakpoints';
+
 .register-form {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
+    padding: 0 2rem;
 
     &__link {
         color: var(--primary-color-deep);
@@ -21,8 +24,12 @@
     }
 
     &__wrapper {
-        min-width: 20rem;
         max-width: 25rem;
+        min-width: 19rem;
+
+        @include for-desktop-up {
+            min-width: 20rem;
+        }
     }
 
     &__buttons {
@@ -56,11 +63,15 @@
     }
 
     &__inputs {
-        min-width: 25.5rem;
         margin-top: 2.5rem;
         gap: 1.5rem;
         display: flex;
         flex-direction: column;
+        min-width: 19rem;
+
+        @include for-desktop-up {
+            min-width: 25.5rem;
+        }
     }
 
     &__cards {
