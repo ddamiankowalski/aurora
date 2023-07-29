@@ -58,6 +58,15 @@
         color: var(--dark-grey);
         line-height: 1.5rem;
 
+        @include for-desktop-down {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            transform: unset;
+            bottom: unset;
+            left: unset;
+        }
+
         &--button {
             font-weight: 600;
             cursor: pointer;

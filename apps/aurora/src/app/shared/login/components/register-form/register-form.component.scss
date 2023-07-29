@@ -94,6 +94,15 @@
         margin-top: 2.5rem;
         color: var(--dark-grey);
 
+        @include for-desktop-down {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            transform: unset;
+            bottom: unset;
+            left: unset;
+        }
+
         &:hover {
             text-decoration: underline;
         }
