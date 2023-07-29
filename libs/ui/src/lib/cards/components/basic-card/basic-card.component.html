@@ -1,0 +1,9 @@
+<div class="basic-card__wrapper" (click)="setActive()">
+  <div class="basic-card__header">
+    <ng-content select="[cardIcon]"></ng-content>
+    <ng-content select="[cardHeader]"></ng-content>
+  </div>
+  <div class="basic-card__content">
+    <ng-content seclect="[cardContent]"></ng-content>
+  </div>
+</div>

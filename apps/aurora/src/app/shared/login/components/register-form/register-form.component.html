@@ -4,7 +4,11 @@
       Create a new account
     </h1>
     <h2 class="register-form__header register-form__header--sub-welcome">
-      Fill out the form below to sign up
+      {{
+        step === 'credentials'
+          ? 'Fill out the form below to sign up'
+          : 'How are you going to use Aurora?'
+      }}
     </h2>
   </div>
 
@@ -28,9 +32,6 @@
         [control]="getRegisterControl('repeatPassword')"
       ></au-ui-basic-input>
     </div>
-  </div>
-
-  <div *ngIf="step === 'personal'" class="register-form__inputs">
     <au-ui-basic-input
       placeholder="Enter first name"
       label="First name"
@@ -41,6 +42,21 @@
       label="Last name"
       [control]="getRegisterControl('lastName')"
     ></au-ui-basic-input>
+  </div>
+
+  <div *ngIf="step === 'personal'" class="register-form__inputs">
+    <div class="register-form__cards">
+      <au-ui-basic-card cardName="personal" [(activeCard)]="activeCard">
+        <i cardIcon class="gg-user-list"></i>
+        <div cardHeader>Personal</div>
+        <div cardContent>Write better. Think more clearly. Stay organized</div>
+      </au-ui-basic-card>
+      <au-ui-basic-card cardName="professional" [(activeCard)]="activeCard">
+        <i cardIcon class="gg-align-bottom"></i>
+        <div cardHeader>Professional</div>
+        <div cardContent>Write better. Think more clearly. Stay organized</div>
+      </au-ui-basic-card>
+    </div>
     <au-ui-checkbox
       >Accept
       <span class="register-form__link"

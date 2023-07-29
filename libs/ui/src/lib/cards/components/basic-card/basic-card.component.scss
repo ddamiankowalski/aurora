@@ -1,0 +1,61 @@
+.basic-card {
+  width: 100%;
+  display: block;
+  background-color: var(--pristine-white);
+  min-width: 1rem;
+  min-height: 1rem;
+  border-radius: .3125rem;
+  box-shadow: 0px 0px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow .3s ease;
+  padding: 1.5rem;
+  cursor: pointer;
+  border: 1px solid var(--primary-medium-lightest);
+
+  &--active {
+    border: 1px solid var(--primary-color);
+
+    & .basic-card__header {
+      color: var(--primary-color-deep);
+    }
+
+    & .basic-card__content {
+      opacity: 1;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+  }
+
+  &__header {
+    display: flex;
+    gap: .75rem;
+    align-items: center;
+    font-weight: 600;
+    color: var(--primary-medium-light);
+    transition: color .3s ease;
+  }
+
+  &__content {
+    font-weight: 300;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--medium-grey);
+    opacity: .7;
+    transition: opacity .3s ease;
+  }
+
+  &:hover {
+    box-shadow: 0px 12px 15px -3px rgba(0, 0, 0, 0.1);
+
+    & .basic-card__header {
+      color: var(--primary-color-deep);
+    }
+
+    & .basic-card__content {
+      opacity: 1;
+    }
+  }
+}

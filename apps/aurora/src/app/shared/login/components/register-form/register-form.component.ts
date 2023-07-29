@@ -17,6 +17,7 @@ import { RegisterStep } from '../../interfaces/register';
   providers: [ClassBinder],
 })
 export class RegisterFormComponent {
+  public activeCard = '';
   private _currentStep: RegisterStep = RegisterStep.Credentials;
 
   private _registerForm: FormGroup = this._fb.group({

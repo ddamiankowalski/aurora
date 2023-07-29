@@ -11,6 +11,7 @@ import { AuCheckboxModule } from '../../../../../../libs/ui/src/lib/checkbox/che
 import { RegisterComponent } from './components/register/register.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { AuCardsModule } from '../../../../../../libs/ui/src/lib/cards/cards.module';
 
 const routes: Routes = [
   {
@@ -37,6 +38,7 @@ const routes: Routes = [
     AuInputModule,
     AuButtonModule,
     AuCheckboxModule,
+    AuCardsModule,
   ],
   declarations: [
     LoginFormComponent,
