@@ -1,29 +1,29 @@
 @import "breakpoints";
 
 .login {
-    &__wrapper {
-        display: grid;
-        grid-template-areas: "form side";
-        grid-template-columns: 70% auto;
-        width: 100%;
-        height: 100vh;
+  &__wrapper {
+    display: grid;
+    grid-template-areas: "form side";
+    grid-template-columns: 70% auto;
+    width: 100%;
+    height: 100vh;
 
-        @include for-desktop-down {
-          grid-template-columns: 100% 0;
-        }
+    @include for-desktop-down {
+      grid-template-columns: 100% 0;
     }
+  }
 
-    &__form {
-        grid-area: form;
-        background-color: var(--background-color);
+  &__form {
+    grid-area: form;
+    background-color: var(--background-color);
+  }
+
+  &__side {
+    grid-area: side;
+    background-image: linear-gradient(#3B5D70, #192831);
+
+    @include for-desktop-down {
+      display: none;
     }
-
-    &__side {
-        grid-area: side;
-        background-image: linear-gradient(#3B5D70, #192831);
-
-        @include for-desktop-down {
-          display: none;
-        }
-    }
+  }
 }
