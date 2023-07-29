@@ -25,4 +25,17 @@
             border-color: var(--primary-medium-light);
         }
     }
+
+    &--primary {
+        button {
+            border-color: var(--primary-color-deep);
+            color: var(--primary-color-deep);
+            font-weight: 500;
+
+            &:hover {
+                border-color: var(--primary-color-deep);
+                color: var(--primary-color-deep);
+            }
+        }
+    }
 }

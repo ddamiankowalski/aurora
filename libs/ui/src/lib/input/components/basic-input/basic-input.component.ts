@@ -19,6 +19,7 @@ export class BasicInputComponent {
   @Input({ required: true }) label = '';
   @Input({ required: true }) control?: FormControl<string>;
   @Input() placeholder = '';
+  @Input() type?: string;
 
   constructor(classBinder: ClassBinder) {
     classBinder.bind('basic-input');

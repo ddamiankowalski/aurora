@@ -8,27 +8,50 @@
     </h2>
   </div>
 
-  <div class="register-form__inputs">
+  <div *ngIf="step === 'credentials'" class="register-form__inputs">
     <au-ui-basic-input
       placeholder="Enter your email"
       label="Email"
-      [control]="emailControl"
+      [control]="getRegisterControl('email')"
     ></au-ui-basic-input>
     <au-ui-basic-input
       placeholder="Enter your password"
       label="Password"
-      [control]="emailControl"
+      type="password"
+      [control]="getRegisterControl('password')"
     ></au-ui-basic-input>
     <au-ui-basic-input
       placeholder="Repeat your password"
       label="Repeat password"
-      [control]="passwordControl"
+      type="password"
+      [control]="getRegisterControl('repeatPassword')"
     ></au-ui-basic-input>
   </div>
 
-  <au-ui-basic-button class="register-form__signup-button"
-    >Next step</au-ui-basic-button
-  >
+  <div *ngIf="step === 'personal'" class="register-form__inputs">
+    <au-ui-basic-input
+      placeholder="Enter first name"
+      label="First name"
+      [control]="getRegisterControl('firstName')"
+    ></au-ui-basic-input>
+    <au-ui-basic-input
+      placeholder="Enter last name"
+      label="Last name"
+      [control]="getRegisterControl('lastName')"
+    ></au-ui-basic-input>
+  </div>
+
+  <div class="register-form__buttons">
+    <au-ui-basic-button (click)="proceed()">{{
+      step === 'credentials' ? 'Next step' : 'Sign Up'
+    }}</au-ui-basic-button>
+    <au-ui-outline-button
+      *ngIf="step === 'personal'"
+      color="primary"
+      (click)="return()"
+      >Previous Step</au-ui-outline-button
+    >
+  </div>
 
   <div class="register-form__sign-in" (click)="goToSignIn()">
     <i class="gg-chevron-double-left"></i>Go back to login screen

@@ -6,6 +6,7 @@ import {
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ClassBinder } from '@aurora/common';
+import { RegisterStep } from '../../interfaces/register';
 
 @Component({
   selector: 'au-register-form',
@@ -16,10 +17,14 @@ import { ClassBinder } from '@aurora/common';
   providers: [ClassBinder],
 })
 export class RegisterFormComponent {
+  private _currentStep: RegisterStep = RegisterStep.Credentials;
+
   private _registerForm: FormGroup = this._fb.group({
     email: [''],
     password: [''],
-    remember: [false],
+    repeatPassword: [''],
+    firstName: [''],
+    lastName: [''],
   });
 
   constructor(
@@ -30,29 +35,33 @@ export class RegisterFormComponent {
     classBinder.bind('register-form');
   }
 
+  get step(): RegisterStep {
+    return this._currentStep;
+  }
+
   get registerFormGroup(): FormGroup {
     return this._registerForm;
   }
 
-  get emailControl(): FormControl<string> {
-    const email = this._registerForm.get('email');
-    if (!email) {
-      throw new Error('FormControl was not found');
+  getRegisterControl(name: string): FormControl {
+    const control = this._registerForm.get(name);
+    if (!control) {
+      throw new Error(`Could not find control with name: ${name}`);
     }
-
-    return email as FormControl<string>;
-  }
-
-  get passwordControl(): FormControl<string> {
-    const password = this._registerForm.get('password');
-    if (!password) {
-      throw new Error('FormControl was not found');
-    }
-
-    return password as FormControl<string>;
+    return this._registerForm.get(name) as FormControl;
   }
 
   public goToSignIn(): void {
     this._router.navigate(['/', 'auth', 'login']);
+  }
+
+  public proceed(): void {
+    if (this._currentStep === RegisterStep.Credentials) {
+      this._currentStep = RegisterStep.Personal;
+    }
+  }
+
+  public return(): void {
+    this._currentStep = RegisterStep.Credentials;
   }
 }

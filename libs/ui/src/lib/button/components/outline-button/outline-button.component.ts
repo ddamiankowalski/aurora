@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  Input,
   ViewEncapsulation,
 } from '@angular/core';
 import { ClassBinder } from '@aurora/common';
@@ -14,7 +15,12 @@ import { ClassBinder } from '@aurora/common';
   providers: [ClassBinder],
 })
 export class OutlineButtonComponent {
-  constructor(classBinder: ClassBinder) {
-    classBinder.bind('outline-button');
+  @Input()
+  set color(value: string) {
+    this._classBinder.bind(`outline-button--${value}`);
+  }
+
+  constructor(private _classBinder: ClassBinder) {
+    _classBinder.bind('outline-button');
   }
 }
