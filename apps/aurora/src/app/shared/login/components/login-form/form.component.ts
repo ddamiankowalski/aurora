@@ -4,6 +4,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ClassBinder } from '@aurora/common';
 
 @Component({
@@ -21,7 +22,11 @@ export class LoginFormComponent {
     remember: [false],
   });
 
-  constructor(classBinder: ClassBinder, private _fb: FormBuilder) {
+  constructor(
+    classBinder: ClassBinder,
+    private _fb: FormBuilder,
+    private _router: Router
+  ) {
     classBinder.bind('form');
   }
 
@@ -45,5 +50,9 @@ export class LoginFormComponent {
     }
 
     return password as FormControl<string>;
+  }
+
+  public goToSignUp(): void {
+    this._router.navigate(['/', 'auth', 'register']);
   }
 }

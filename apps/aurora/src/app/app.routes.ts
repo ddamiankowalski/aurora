@@ -2,14 +2,14 @@ import { Route } from '@angular/router';
 
 export const routes: Route[] = [
   {
-    path: 'login',
+    path: 'auth',
     loadChildren: () =>
       import('./shared/login/auth.module').then((m) => m.LoginModule),
   },
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'auth',
     pathMatch: 'full',
   },
-  { path: '**', redirectTo: 'login', pathMatch: 'full' },
+  { path: '**', redirectTo: 'auth', pathMatch: 'full' },
 ];

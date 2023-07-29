@@ -1,0 +1,36 @@
+<form [formGroup]="registerFormGroup" class="register-form__wrapper">
+  <div class="register-form__header">
+    <h1 class="register-form__header register-form__header--welcome">
+      Create a new account
+    </h1>
+    <h2 class="register-form__header register-form__header--sub-welcome">
+      Fill out the form below to sign up
+    </h2>
+  </div>
+
+  <div class="register-form__inputs">
+    <au-ui-basic-input
+      placeholder="Enter your email"
+      label="Email"
+      [control]="emailControl"
+    ></au-ui-basic-input>
+    <au-ui-basic-input
+      placeholder="Enter your password"
+      label="Password"
+      [control]="emailControl"
+    ></au-ui-basic-input>
+    <au-ui-basic-input
+      placeholder="Repeat your password"
+      label="Repeat password"
+      [control]="passwordControl"
+    ></au-ui-basic-input>
+  </div>
+
+  <au-ui-basic-button class="register-form__signup-button"
+    >Next step</au-ui-basic-button
+  >
+
+  <div class="register-form__sign-in" (click)="goToSignIn()">
+    <i class="gg-chevron-double-left"></i>Go back to login screen
+  </div>
+</form>

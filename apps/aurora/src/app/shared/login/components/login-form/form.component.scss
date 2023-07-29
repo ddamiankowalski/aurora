@@ -1,0 +1,84 @@
+.form {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__wrapper {
+        min-width: 20rem;
+    }
+
+    &__header {
+        animation-name: show;
+        animation-duration: .5s;
+        color: var(--dark-color);
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        &--welcome {
+            display: block;
+            font-weight: 700;
+            font-size: 1.875rem;
+            color: var(--primary-color-deep);
+        }
+
+        &--sub-welcome {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--dark-grey);
+        }
+    }
+
+    &__inputs {
+        margin-top: 2.5rem;
+        gap: 2rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__sign-up {
+        position: absolute;
+        bottom: 4rem;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.875rem;
+        font-weight: 400;
+        text-align: center;
+        margin-top: 2.5rem;
+        color: var(--dark-grey);
+
+        &--button {
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--primary-color-deep);
+
+            &:hover {
+                text-decoration: underline;
+            }
+
+            &:focus {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &__util {
+        margin: 2.5rem 0;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+@keyframes show {
+    0% {
+        opacity: 0;
+        transform: translateY(-.25rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
