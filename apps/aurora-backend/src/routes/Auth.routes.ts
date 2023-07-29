@@ -28,7 +28,7 @@ router.post('/register', async (req, res, next) => {
 
   try {
     await controller.register(email, firstName, lastName, password);
-    res.sendStatus(200);
+    res.status(200).json({ ok: true });
   } catch (err) {
     return next(err);
   }

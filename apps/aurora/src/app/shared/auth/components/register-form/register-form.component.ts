@@ -6,7 +6,8 @@ import {
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ClassBinder } from '@aurora/common';
-import { RegisterStep } from '../../interfaces/register';
+import { RegisterPayload, RegisterStep } from '../../interfaces/register';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'au-register-form',
@@ -32,7 +33,8 @@ export class RegisterFormComponent {
   constructor(
     classBinder: ClassBinder,
     private _fb: FormBuilder,
-    private _router: Router
+    private _router: Router,
+    private _auth: AuthService
   ) {
     classBinder.bind('register-form');
   }
@@ -58,12 +60,20 @@ export class RegisterFormComponent {
   }
 
   public proceed(): void {
-    if (this._currentStep === RegisterStep.Credentials) {
-      this._currentStep = RegisterStep.Personal;
-    }
+    this._currentStep === RegisterStep.Credentials
+      ? (this._currentStep = RegisterStep.Personal)
+      : this.signUp();
   }
 
   public return(): void {
     this._currentStep = RegisterStep.Credentials;
+  }
+
+  private signUp(): void {
+    const { email, firstName, lastName, password } = this._registerForm.value;
+
+    this._auth
+      .registerAccount({ email, firstName, lastName, password })
+      .subscribe(console.log);
   }
 }
