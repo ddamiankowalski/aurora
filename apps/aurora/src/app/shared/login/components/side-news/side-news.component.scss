@@ -30,6 +30,8 @@
     }
 
     &__slider {
+        margin: 0 8rem;
+        position: relative;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -42,7 +44,6 @@
             font-size: 2.5rem;
             font-weight: 600;
             color: var(--primary-light);
-            margin: 0 6rem;
             line-height: 3rem;
         }
 
@@ -50,8 +51,43 @@
             font-size: 1rem;
             font-weight: 500;
             color: var(--primary-medium-light);
-            margin: 1rem 6rem;
+            margin: 1.5rem 0;
             line-height: 2rem;
+        }
+    }
+
+    &__slider-button {
+        margin-top: 1rem;
+        align-self: flex-start;
+        margin: 1rem 0;
+    }
+
+    &__slider-nav {
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        margin: 1.5rem 0;
+        z-index: 1;
+
+        span {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            padding: 0 2rem;
+            font-size: 0.75rem;
+            margin-top: .25rem;
+            color: var(--primary-medium-light);
+            cursor: pointer;
+
+            &:hover {
+                color: var(--primary-medium-lighter);
+            }
+
+            i {
+                color: var(--primary-medium-lighter);
+            }
         }
     }
 
