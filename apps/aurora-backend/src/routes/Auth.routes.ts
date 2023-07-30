@@ -28,7 +28,12 @@ router.post('/register', async (req, res, next) => {
 
   try {
     await controller.register(email, firstName, lastName, password);
-    res.status(200).json({ ok: true });
+    res
+      .status(200)
+      .json({
+        message: 'User was successfully saved in the database',
+        status: 200,
+      });
   } catch (err) {
     return next(err);
   }
