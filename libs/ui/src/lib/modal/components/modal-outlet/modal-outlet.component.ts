@@ -17,6 +17,7 @@ import { DialogModalComponent } from '../dialog-modal/dialog-modal.component';
 @Component({
   selector: 'au-ui-modal-outlet',
   templateUrl: './modal-outlet.component.html',
+  styleUrls: ['./modal-outlet.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   providers: [ClassBinder],
@@ -26,11 +27,11 @@ export class ModalOutletComponent implements OnInit {
   private _outletVCR!: ViewContainerRef;
 
   constructor(
-    classBinder: ClassBinder,
+    private _classBinder: ClassBinder,
     private _modal: ModalService,
     private _destroyRef: DestroyRef
   ) {
-    classBinder.bind('modal-outlet');
+    this._classBinder.bind('modal-outlet');
   }
 
   ngOnInit(): void {
@@ -42,6 +43,8 @@ export class ModalOutletComponent implements OnInit {
   private createModal(modal: Modal): void {
     const componentRef = this._outletVCR.createComponent(DialogModalComponent);
     this.setModalInputs(modal, componentRef);
+
+    this._classBinder.bind('modal-outlet--active');
   }
 
   private setModalInputs(

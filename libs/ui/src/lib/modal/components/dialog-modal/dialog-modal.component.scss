@@ -11,6 +11,9 @@
     border-radius: 0.3125rem;
     box-shadow: 0px 0px 15px -3px rgba(0, 0, 0, 0.1);
     background-color: var(--background-color);
+
+    animation-name: show-modal;
+    animation-duration: .5s;
   }
 
   &__titles {
@@ -32,5 +35,15 @@
 
   &__buttons {
     margin-top: 1rem;
+  }
+}
+
+@keyframes show-modal {
+  0% {
+    transform: scale(95%)
+  }
+
+  100% {
+    transform: scale(100%);
   }
 }
