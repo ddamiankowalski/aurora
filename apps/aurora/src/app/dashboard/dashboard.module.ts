@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CommonModule } from '@angular/common';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 const routes: Routes = [
   {
@@ -15,7 +16,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [DashboardComponent],
+  declarations: [DashboardComponent, SidenavComponent],
   imports: [RouterModule.forChild(routes), CommonModule],
   exports: [],
 })
