@@ -6,7 +6,7 @@ import {
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ClassBinder } from '@aurora/common';
-import { RegisterPayload, RegisterStep } from '../../interfaces/register';
+import { RegisterStep } from '../../interfaces/register';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -47,7 +47,7 @@ export class RegisterFormComponent {
     return this._registerForm;
   }
 
-  getRegisterControl(name: string): FormControl {
+  public getRegisterControl(name: string): FormControl {
     const control = this._registerForm.get(name);
     if (!control) {
       throw new Error(`Could not find control with name: ${name}`);
@@ -71,9 +71,6 @@ export class RegisterFormComponent {
 
   private signUp(): void {
     const { email, firstName, lastName, password } = this._registerForm.value;
-
-    this._auth
-      .registerAccount({ email, firstName, lastName, password })
-      .subscribe(console.log);
+    this._auth.registerAccount({ email, firstName, lastName, password });
   }
 }

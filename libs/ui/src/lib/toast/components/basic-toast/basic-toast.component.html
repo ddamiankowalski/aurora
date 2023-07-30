@@ -1,4 +1,7 @@
-<div class="basic-toast__wrapper">
+<div
+  class="basic-toast__wrapper"
+  [ngClass]="toast ? 'basic-toast__wrapper--' + toast.type : ''"
+>
   <i class="basic-toast__icon gg-close" (click)="closeToast()"></i>
   <div class="basic-toast__title">{{ title }}</div>
   <div class="basic-toast__description">{{ description }}</div>

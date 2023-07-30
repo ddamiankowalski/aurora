@@ -7,14 +7,17 @@ import {
 } from '@angular/core';
 import { ClassBinder } from '@aurora/common';
 import { Toast } from '../../interfaces/toast';
+import { CommonModule } from '@angular/common';
 
 @Component({
+  standalone: true,
   selector: 'au-ui-basic-toast',
   templateUrl: './basic-toast.component.html',
   styleUrls: ['./basic-toast.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [ClassBinder],
+  imports: [CommonModule],
 })
 export class BasicToastComponent {
   @Input() toast?: Toast;
