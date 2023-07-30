@@ -11,4 +11,6 @@ export interface RegisterPayload {
   accountType?: AccountType;
 }
 
+export interface RegisterResponse { status: number; message: string }
+
 export type AccountType = 'professional' | 'personal';

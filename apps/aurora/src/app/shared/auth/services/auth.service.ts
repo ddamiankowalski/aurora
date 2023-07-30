@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { EMPTY, Observable, catchError } from 'rxjs';
-import { RegisterPayload } from '../interfaces/register';
+import { RegisterPayload, RegisterResponse } from '../interfaces/register';
 import { ToastService } from 'libs/ui/src/lib/toast/services/toast.service';
 import { ToastType } from 'libs/ui/src/lib/toast/interfaces/toast';
+import { LoginPayoad, LoginResponse } from '../interfaces/login';
 
 @Injectable({
   providedIn: 'root',
@@ -14,14 +15,14 @@ export class AuthService {
 
   public registerAccount(
     payload: RegisterPayload
-  ): Observable<{ status: number; message: string }> {
+  ): Observable<RegisterResponse> {
     return this._http
-      .post<{ status: number; message: string }>('api/register', payload)
+      .post<RegisterResponse>('api/register', payload)
       .pipe(
         catchError((err) => {
           const error = err.error;
           this._toast.openToast({
-            type: ToastType.Success,
+            type: ToastType.Error,
             info: {
               title: error.errorType,
               description: error.message,
@@ -30,5 +31,19 @@ export class AuthService {
           return EMPTY;
         })
       );
+  }
+
+  public login(payload: LoginPayoad): Observable<LoginResponse> {
+    return this._http.post<LoginResponse>('api/login', payload).pipe(catchError((err) => {
+      const error = err.error;
+      this._toast.openToast({
+        type: ToastType.Error,
+        info: {
+          title: error.errorType,
+          description: error.message,
+        },
+      });
+      return EMPTY;
+    }))
   }
 }
