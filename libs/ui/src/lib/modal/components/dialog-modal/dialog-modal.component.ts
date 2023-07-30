@@ -5,7 +5,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { ClassBinder } from '@aurora/common';
-import { Modal } from '../../interfaces/modal';
+import { Modal, ModalRef } from '../../interfaces/modal';
 import { AuButtonModule } from '../../../button/button.module';
 
 @Component({
@@ -20,8 +20,29 @@ import { AuButtonModule } from '../../../button/button.module';
 })
 export class DialogModalComponent {
   @Input() modal?: Modal;
+  @Input({ required: true }) ref?: ModalRef;
 
   constructor(classBinder: ClassBinder) {
     classBinder.bind('dialog-modal');
+  }
+
+  onSuccess(): void {
+    this.runOnSuccess();
+    this.closeDialog();
+  }
+
+  private runOnSuccess(): void {
+    if (this.modal?.info.onSuccess) {
+      this.modal.info.onSuccess();
+    }
+    this.closeDialog();
+  }
+
+  private closeDialog(): void {
+    if (!this.ref) {
+      throw new Error('No ModalRef provided!');
+    }
+
+    this.ref.destroy();
   }
 }

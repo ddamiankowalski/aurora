@@ -1,16 +1,16 @@
 import { ComponentRef } from '@angular/core';
-import { Observable } from 'rxjs';
 
-export interface Modal {
-  type: ModalType;
+export interface ModalInfo {
   title?: string;
   subtitle?: string;
+  onSuccess?: () => void;
 }
 
-export interface ModalRef {
-  componentRef: ComponentRef<any>;
-  state$: Observable<ModalState>;
+export interface Modal {
+  info: ModalInfo;
+  type: ModalType;
 }
+
+export type ModalRef = ComponentRef<any>;
 
 export type ModalType = 'dialog';
-export enum ModalState {}

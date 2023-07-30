@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { Modal } from '../interfaces/modal';
+import { Modal, ModalInfo, ModalType } from '../interfaces/modal';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +12,7 @@ export class ModalService {
     return this._modalOpen$ as Observable<Modal>;
   }
 
-  public openModal(modal: Modal): void {
-    this._modalOpen$.next(modal);
+  public openModal(type: ModalType, info: ModalInfo): void {
+    this._modalOpen$.next({ info, type });
   }
 }

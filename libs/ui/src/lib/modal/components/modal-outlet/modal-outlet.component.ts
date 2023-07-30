@@ -25,6 +25,7 @@ import { DialogModalComponent } from '../dialog-modal/dialog-modal.component';
 export class ModalOutletComponent implements OnInit {
   @ViewChild('outletTemplate', { static: true, read: ViewContainerRef })
   private _outletVCR!: ViewContainerRef;
+  private _modalRefSet: Set<ComponentRef<any>> = new Set();
 
   constructor(
     private _classBinder: ClassBinder,
@@ -41,10 +42,14 @@ export class ModalOutletComponent implements OnInit {
   }
 
   private createModal(modal: Modal): void {
-    const componentRef = this._outletVCR.createComponent(DialogModalComponent);
-    this.setModalInputs(modal, componentRef);
+    this.setBackdrop();
 
-    this._classBinder.bind('modal-outlet--active');
+    const componentRef = this._outletVCR.createComponent(DialogModalComponent);
+    componentRef.onDestroy(() => this.onModalDestroyed(componentRef));
+
+    this._modalRefSet.add(componentRef);
+
+    this.setModalInputs(modal, componentRef);
   }
 
   private setModalInputs(
@@ -52,6 +57,21 @@ export class ModalOutletComponent implements OnInit {
     componentRef: ComponentRef<DialogModalComponent>
   ): void {
     componentRef.setInput('modal', modal);
+    componentRef.setInput('ref', componentRef);
     componentRef.changeDetectorRef.detectChanges();
+  }
+
+  private setBackdrop(): void {
+    if (!this._modalRefSet.size) {
+      this._classBinder.bind('modal-outlet--active');
+    }
+  }
+
+  private onModalDestroyed(componentRef: ComponentRef<any>): void {
+    this._modalRefSet.delete(componentRef);
+
+    if (!this._modalRefSet.size) {
+      this._classBinder.unbind('modal-outlet--active');
+    }
   }
 }
