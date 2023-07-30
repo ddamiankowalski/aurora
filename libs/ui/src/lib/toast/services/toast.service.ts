@@ -17,6 +17,7 @@ export class ToastService {
   }
 
   public handleError(err: Record<string, any>): Observable<never> {
+    console.log(err);
     {
       const error = err['error'];
       this.openToast({

@@ -5,12 +5,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SideNewsComponent } from './components/side-news/side-news.component';
 import { CommonModule } from '@angular/common';
 import { AuInputModule } from '@aurora/ui';
-import { AuButtonModule } from '../../../../../../libs/ui/src/lib/button/button.module';
-import { AuCheckboxModule } from '../../../../../../libs/ui/src/lib/checkbox/checkbox.module';
 import { AuthComponent } from './components/auth/auth.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
-import { AuCardsModule } from '../../../../../../libs/ui/src/lib/cards/cards.module';
 import { HttpClientModule } from '@angular/common/http';
+import { AuButtonModule } from 'libs/ui/src/lib/button/button.module';
+import { AuCheckboxModule } from '../../../../../libs/ui/src/lib/checkbox/checkbox.module';
+import { AuCardsModule } from '../../../../../libs/ui/src/lib/cards/cards.module';
 
 const routes: Routes = [
   {
@@ -47,4 +47,4 @@ const routes: Routes = [
     RegisterFormComponent,
   ],
 })
-export class LoginModule {}
+export class AuthModule {}

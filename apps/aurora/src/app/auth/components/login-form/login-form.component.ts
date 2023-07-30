@@ -6,6 +6,7 @@ import {
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ClassBinder } from '@aurora/common';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'au-login-form',
@@ -25,7 +26,8 @@ export class LoginFormComponent {
   constructor(
     classBinder: ClassBinder,
     private _fb: FormBuilder,
-    private _router: Router
+    private _router: Router,
+    private _auth: AuthService
   ) {
     classBinder.bind('form');
   }
@@ -54,5 +56,10 @@ export class LoginFormComponent {
 
   public goToSignUp(): void {
     this._router.navigate(['/', 'auth', 'register']);
+  }
+
+  public signIn(): void {
+    const { email, password } = this._loginForm.value;
+    this._auth.login({ email, password });
   }
 }

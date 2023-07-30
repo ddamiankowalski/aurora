@@ -16,7 +16,10 @@ router.post('/login', async (req, res, next) => {
     res.cookie('aurora_auth', accessToken);
     res.cookie('aurora_auth_ref', refreshToken);
 
-    res.sendStatus(200);
+    res.status(200).json({
+      message: 'Logged in successfully',
+      status: 200,
+    });
   } catch (err) {
     return next(err);
   }
@@ -28,12 +31,10 @@ router.post('/register', async (req, res, next) => {
 
   try {
     await controller.register(email, firstName, lastName, password);
-    res
-      .status(200)
-      .json({
-        message: 'User was successfully saved in the database',
-        status: 200,
-      });
+    res.status(200).json({
+      message: 'User was successfully saved in the database',
+      status: 200,
+    });
   } catch (err) {
     return next(err);
   }

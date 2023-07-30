@@ -3,8 +3,12 @@ import { Route } from '@angular/router';
 export const routes: Route[] = [
   {
     path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
+    path: 'dashboard',
     loadChildren: () =>
-      import('./shared/auth/auth.module').then((m) => m.LoginModule),
+      import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
   {
     path: '',

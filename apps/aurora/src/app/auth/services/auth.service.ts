@@ -33,6 +33,6 @@ export class AuthService {
     this._http
       .post<LoginResponse>('api/login', payload)
       .pipe(catchError((err) => this._toast.handleError(err)))
-      .subscribe();
+      .subscribe(() => this._router.navigate(['/', 'dashboard']));
   }
 }
