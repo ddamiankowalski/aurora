@@ -1,9 +1,12 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  Input,
   ViewEncapsulation,
 } from '@angular/core';
 import { ClassBinder } from '@aurora/common';
+import { Modal } from '../../interfaces/modal';
+import { AuButtonModule } from '../../../button/button.module';
 
 @Component({
   standalone: true,
@@ -13,8 +16,11 @@ import { ClassBinder } from '@aurora/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   providers: [ClassBinder],
+  imports: [AuButtonModule],
 })
 export class DialogModalComponent {
+  @Input() modal?: Modal;
+
   constructor(classBinder: ClassBinder) {
     classBinder.bind('dialog-modal');
   }

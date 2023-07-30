@@ -11,7 +11,7 @@ import {
 import { ClassBinder } from '@aurora/common';
 import { ModalService } from '../../services/modal.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Modal, ModalRef } from '../../interfaces/modal';
+import { Modal } from '../../interfaces/modal';
 import { DialogModalComponent } from '../dialog-modal/dialog-modal.component';
 
 @Component({
@@ -41,15 +41,14 @@ export class ModalOutletComponent implements OnInit {
 
   private createModal(modal: Modal): void {
     const componentRef = this._outletVCR.createComponent(DialogModalComponent);
-    // componentRef.injector = this.setModalInputs(modal, componentRef);
-    // this._modal.setModalRef({ componentRef });
+    this.setModalInputs(modal, componentRef);
   }
 
   private setModalInputs(
     modal: Modal,
     componentRef: ComponentRef<DialogModalComponent>
   ): void {
-    console.log(modal);
+    componentRef.setInput('modal', modal);
     componentRef.changeDetectorRef.detectChanges();
   }
 }

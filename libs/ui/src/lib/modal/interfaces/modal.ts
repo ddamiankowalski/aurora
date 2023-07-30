@@ -2,12 +2,13 @@ import { ComponentRef } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface Modal {
-  header: string;
   type: ModalType;
+  title?: string;
+  subtitle?: string;
 }
 
-export interface ModalRef<T = ComponentRef<any>> {
-  componentRef: ComponentRef<T>;
+export interface ModalRef {
+  componentRef: ComponentRef<any>;
   state$: Observable<ModalState>;
 }
 
