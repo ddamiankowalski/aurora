@@ -1,0 +1,12 @@
+.top-menu {
+  height: 100%;
+
+  &__wrapper {
+    padding: 0 3.75rem;
+    height: 100%;
+    display: flex;
+    flex-flow: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

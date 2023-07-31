@@ -1,0 +1,14 @@
+.quick-menu {
+  display: flex;
+  gap: 2.5rem;
+
+  &__item {
+    color: var(--medium-grey);
+    transition: color .3s;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--dark-grey);
+    }
+  }
+}
