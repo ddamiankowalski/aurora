@@ -1,5 +1,12 @@
-<ng-container *ngFor="let item of items">
-  <div class="quick-menu__item">
+<div class="quick-menu__actions">
+  <div *ngFor="let action of actions" class="quick-menu__action">
+    <i [ngClass]="['gg-' + action.icon]"></i>
+    {{ action.name }}
+  </div>
+</div>
+
+<div class="quick-menu__icons">
+  <div *ngFor="let item of items" class="quick-menu__item">
     <i [ngClass]="['gg-' + item.icon]"></i>
   </div>
-</ng-container>
+</div>

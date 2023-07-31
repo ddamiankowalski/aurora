@@ -4,7 +4,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { ClassBinder } from '@aurora/common';
-import { QuickMenuItems } from '../../interfaces/quick-menu';
+import { QuickMenuActions, QuickMenuItems } from '../../interfaces/quick-menu';
 
 @Component({
   selector: 'au-quick-menu',
@@ -19,6 +19,11 @@ export class QuickMenuComponent {
     { icon: 'info' },
     { icon: 'credit-card' },
     { icon: 'inbox' },
+  ];
+
+  public actions: QuickMenuActions = [
+    { name: 'All appointments', icon: 'user-add' },
+    { name: 'New appointment', icon: 'user-list' },
   ];
 
   constructor(classBinder: ClassBinder) {
