@@ -1,6 +1,5 @@
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   ViewEncapsulation,
 } from '@angular/core';
@@ -24,11 +23,7 @@ export class SidenavComponent {
     { name: 'workers', icon: 'user' },
   ];
 
-  constructor(classBinder: ClassBinder, public device: DeviceUtilsService, cdRef: ChangeDetectorRef) {
+  constructor(classBinder: ClassBinder, public device: DeviceUtilsService) {
     classBinder.bind('sidenav');
-
-    this.device.isDesktop$.subscribe(() => {
-      cdRef.detectChanges();
-    })
   }
 }
