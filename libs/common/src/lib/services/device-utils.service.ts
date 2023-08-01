@@ -1,15 +1,16 @@
-import { Injectable } from "@angular/core";
-import { Device } from "../interfaces/device-utils";
-import { BehaviorSubject, Observable, map } from "rxjs";
+import { Injectable, NgZone } from '@angular/core';
+import { Device } from '../interfaces/device-utils';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DeviceUtilsService {
-  private _deviceType$: BehaviorSubject<Device>;
+  private _deviceType$: BehaviorSubject<Device> = new BehaviorSubject<Device>(
+    Device.Desktop
+  );
 
-  constructor() {
-    this._deviceType$ = new BehaviorSubject(this.getType);
+  constructor(private _zone: NgZone) {
     this.initializeResizeObserver();
   }
 
@@ -18,18 +19,23 @@ export class DeviceUtilsService {
   }
 
   get getType(): Device {
-    return window.innerWidth > 1200 ? Device.Desktop : Device.Mobile
+    return window.innerWidth > 1200 ? Device.Desktop : Device.Mobile;
   }
 
   get isDesktop$(): Observable<boolean> {
-    return this._deviceType$.pipe(map(type => type === Device.Desktop));
+    return this._deviceType$
+      .asObservable()
+      .pipe(map((type) => type === Device.Desktop));
   }
 
   private initializeResizeObserver(): void {
+    this._deviceType$.next(Device.Desktop);
     new ResizeObserver(() => this.updateDeviceType()).observe(document.body);
   }
 
   private updateDeviceType(): void {
-    this._deviceType$.next(this.getType);
+    this._zone.run(() => {
+      this._deviceType$.next(this.getType);
+    });
   }
 }

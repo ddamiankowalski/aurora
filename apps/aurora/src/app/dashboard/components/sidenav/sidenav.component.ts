@@ -1,8 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ViewEncapsulation,
-} from '@angular/core';
+import { ChangeDetectorRef, Component, ViewEncapsulation } from '@angular/core';
 import { ClassBinder, DeviceUtilsService } from '@aurora/common';
 import { NavigationItems } from '../../interfaces/menu';
 
@@ -10,7 +6,6 @@ import { NavigationItems } from '../../interfaces/menu';
   selector: 'au-sidenav',
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   providers: [ClassBinder],
 })
@@ -23,7 +18,11 @@ export class SidenavComponent {
     { name: 'workers', icon: 'user' },
   ];
 
-  constructor(classBinder: ClassBinder, public device: DeviceUtilsService) {
+  constructor(
+    classBinder: ClassBinder,
+    public device: DeviceUtilsService,
+    public cdRef: ChangeDetectorRef
+  ) {
     classBinder.bind('sidenav');
   }
 }

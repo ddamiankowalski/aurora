@@ -1,4 +1,4 @@
 export enum Device {
-  Mobile,
-  Desktop
+  Mobile = 'MOBILE',
+  Desktop = 'DESKTOP',
 }
