@@ -1,4 +1,4 @@
-<nav class="sidenav__wrapper">
+<nav *ngIf="device.isDesktop$ | async" class="sidenav__wrapper">
   <div *ngFor="let item of menuItems" class="sidenav__item">
     <div class="sidenav__icon">
       <i [ngClass]="['gg-' + item.icon]"><span></span></i>

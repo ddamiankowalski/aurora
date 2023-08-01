@@ -1,3 +1,5 @@
+@import 'breakpoints';
+
 .sidenav {
   display: flex;
   width: 100%;
@@ -7,6 +9,12 @@
   &__wrapper {
     margin-top: 3rem;
     width: 100%;
+
+    @include for-desktop-down {
+      margin: unset;
+      display: flex;
+      align-items: center;
+    }
   }
 
   &__item {

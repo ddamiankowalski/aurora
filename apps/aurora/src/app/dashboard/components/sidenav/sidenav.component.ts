@@ -1,9 +1,10 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ClassBinder } from '@aurora/common';
+import { ClassBinder, DeviceUtilsService } from '@aurora/common';
 import { NavigationItems } from '../../interfaces/menu';
 
 @Component({
@@ -23,7 +24,11 @@ export class SidenavComponent {
     { name: 'workers', icon: 'user' },
   ];
 
-  constructor(classBinder: ClassBinder) {
+  constructor(classBinder: ClassBinder, public device: DeviceUtilsService, cdRef: ChangeDetectorRef) {
     classBinder.bind('sidenav');
+
+    this.device.isDesktop$.subscribe(() => {
+      cdRef.detectChanges();
+    })
   }
 }
