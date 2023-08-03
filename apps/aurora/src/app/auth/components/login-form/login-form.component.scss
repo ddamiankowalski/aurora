@@ -1,4 +1,5 @@
 @import 'breakpoints';
+@import 'animations';
 
 .form {
     position: relative;
@@ -19,7 +20,7 @@
     }
 
     &__header {
-        animation-name: show;
+        animation-name: au-show;
         animation-duration: .5s;
         color: var(--dark-color);
         text-align: left;
@@ -88,17 +89,5 @@
         margin: 2.5rem 0;
         display: flex;
         justify-content: space-between;
-    }
-}
-
-@keyframes show {
-    0% {
-        opacity: 0;
-        transform: translateY(-.25rem);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0);
     }
 }

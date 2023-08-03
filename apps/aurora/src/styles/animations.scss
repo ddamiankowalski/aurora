@@ -1,0 +1,39 @@
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@include keyframes(au-show) {
+  0% {
+    opacity: 0;
+    transform: translateY(-.25rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes au-show-modal {
+  0% {
+    transform: scale(95%)
+  }
+
+  100% {
+    transform: scale(100%);
+  }
+}

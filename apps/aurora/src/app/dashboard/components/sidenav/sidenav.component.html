@@ -6,3 +6,18 @@
     <span class="sidenav__item-name">{{ item.name }}</span>
   </div>
 </nav>
+
+<nav *ngIf="(device.isDesktop$ | async) === false" class="sidenav__wrapper">
+  <div class="sidenav__hamburger">
+    <i class="gg-menu"></i>
+  </div>
+  <div class="sidenav__user-info">
+    <div class="sidenav__user-info--bell-section">
+      <i class="gg-bell"></i>
+    </div>
+    <div class="sidenav__user-info--avatar-section">
+      <au-ui-basic-avatar size="small" imageSrc="1.png"></au-ui-basic-avatar>
+      <i class="gg-chevron-down"></i>
+    </div>
+  </div>
+</nav>

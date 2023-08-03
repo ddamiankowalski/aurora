@@ -6,12 +6,18 @@ import { BehaviorSubject, Observable, map } from 'rxjs';
   providedIn: 'root',
 })
 export class DeviceUtilsService {
+  public readonly isDesktop$: Observable<boolean>;
+
   private _deviceType$: BehaviorSubject<Device> = new BehaviorSubject<Device>(
     Device.Desktop
   );
 
   constructor(private _zone: NgZone) {
     this.initializeResizeObserver();
+
+    this.isDesktop$ = this._deviceType$
+      .asObservable()
+      .pipe(map((type) => type === Device.Desktop));
   }
 
   get getType$(): Observable<Device> {
@@ -20,12 +26,6 @@ export class DeviceUtilsService {
 
   get getType(): Device {
     return window.innerWidth > 1200 ? Device.Desktop : Device.Mobile;
-  }
-
-  get isDesktop$(): Observable<boolean> {
-    return this._deviceType$
-      .asObservable()
-      .pipe(map((type) => type === Device.Desktop));
   }
 
   private initializeResizeObserver(): void {
