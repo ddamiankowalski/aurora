@@ -24,7 +24,7 @@
   &__user-info {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 2rem;
     color: var(--primary-light);
 
     &--avatar-section {
@@ -34,9 +34,16 @@
     }
 
     &--bell-section {
+      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
+
+      au-ui-notification-badge {
+        position: absolute;
+        right: -75%;
+        top: -75%;
+      }
     }
   }
 

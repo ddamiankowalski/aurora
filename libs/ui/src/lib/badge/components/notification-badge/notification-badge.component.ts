@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  Input,
   ViewEncapsulation,
 } from '@angular/core';
 import { ClassBinder } from '@aurora/common';
@@ -14,6 +15,8 @@ import { ClassBinder } from '@aurora/common';
   providers: [ClassBinder],
 })
 export class NotificationBadgeComponent {
+  @Input() value?: string;
+
   constructor(classBinder: ClassBinder) {
     classBinder.bind('notification-badge');
   }

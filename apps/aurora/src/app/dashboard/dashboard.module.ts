@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { TopMenuComponent } from './components/top-menu/top-menu.component';
 import { QuickMenuComponent } from './components/quick-menu/quick-menu.component';
-import { AuAvatarModule } from '@aurora/ui';
+import { AuAvatarModule, AuBadgeModule } from '@aurora/ui';
 
 const routes: Routes = [
   {
@@ -25,7 +25,12 @@ const routes: Routes = [
     TopMenuComponent,
     QuickMenuComponent,
   ],
-  imports: [RouterModule.forChild(routes), CommonModule, AuAvatarModule],
+  imports: [
+    RouterModule.forChild(routes),
+    CommonModule,
+    AuAvatarModule,
+    AuBadgeModule,
+  ],
   exports: [],
 })
 export class DashboardModule {}
