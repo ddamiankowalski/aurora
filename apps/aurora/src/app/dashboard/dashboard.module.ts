@@ -6,6 +6,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { TopMenuComponent } from './components/top-menu/top-menu.component';
 import { QuickMenuComponent } from './components/quick-menu/quick-menu.component';
 import { AuAvatarModule, AuBadgeModule } from '@aurora/ui';
+import { MobileMenuComponent } from './components/mobile-menu/mobile-menu.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,7 @@ const routes: Routes = [
     SidenavComponent,
     TopMenuComponent,
     QuickMenuComponent,
+    MobileMenuComponent,
   ],
   imports: [
     RouterModule.forChild(routes),

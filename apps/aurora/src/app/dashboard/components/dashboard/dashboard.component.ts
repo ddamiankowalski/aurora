@@ -3,7 +3,7 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { ClassBinder } from '@aurora/common';
+import { ClassBinder, DeviceUtilsService } from '@aurora/common';
 
 @Component({
   selector: 'au-dashboard',
@@ -14,7 +14,7 @@ import { ClassBinder } from '@aurora/common';
   providers: [ClassBinder],
 })
 export class DashboardComponent {
-  constructor(classBinder: ClassBinder) {
+  constructor(classBinder: ClassBinder, public device: DeviceUtilsService) {
     classBinder.bind('dashboard');
   }
 }

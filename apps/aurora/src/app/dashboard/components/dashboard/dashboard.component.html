@@ -10,4 +10,11 @@
   <router-outlet></router-outlet>
 </section>
 
+<section
+  *ngIf="(device.isDesktop$ | async) === false"
+  class="dashboard__mobile-menu"
+>
+  <au-mobile-menu></au-mobile-menu>
+</section>
+
 <router-outlet></router-outlet>

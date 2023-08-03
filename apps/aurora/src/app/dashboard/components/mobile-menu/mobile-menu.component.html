@@ -1,0 +1,6 @@
+<div class="mobile-menu__wrapper">
+  <div *ngFor="let item of navItems" class="mobile-menu__item">
+    <i [ngClass]="['gg-' + item.icon]"></i>
+    <span class="mobile-menu__item--name">{{ item.name }}</span>
+  </div>
+</div>
